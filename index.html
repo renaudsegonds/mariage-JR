@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jade & Renaud</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 
-/* ---------------- BASE ---------------- */
+/* ---------------- GLOBAL ---------------- */
 
 *{
 margin:0;
@@ -19,80 +19,51 @@ box-sizing:border-box;
 
 body{
 font-family:'Montserrat',sans-serif;
-background:white;
+background:#faf8f5;
 color:#4d4d4d;
 line-height:1.7;
-}
-
-/* ---------------- OLIVIERS ---------------- */
-
-.olivier{
-position:fixed;
-width:180px;
-opacity:0.18;
-z-index:0;
-pointer-events:none;
-}
-
-.olivier.gauche{
-top:0;
-left:0;
-transform:rotate(-15deg);
-}
-
-.olivier.droite{
-bottom:0;
-right:0;
-transform:rotate(15deg);
 }
 
 /* ---------------- HERO ---------------- */
 
 .hero{
 height:100vh;
-background:#f8f6f3;
+background:#faf8f5;
 display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
 position:relative;
-color:#4d4d4d;
-}
-
-.hero::after{
-content:"";
-position:absolute;
-inset:0;
-background:rgba(0,0,0,0.35);
 }
 
 .hero-content{
-position:relative;
-z-index:2;
-color:white;
 padding:20px;
 }
 
-/* TYPO MANUSCRITE */
+/* NOM PRINCIPAL (plus sombre, élégant) */
 .hero h1{
-font-family:'Great Vibes', cursive;
-font-size:5rem;
-color:#9aa87a; /* OLIVE */
-font-weight:400;
+font-family:'Cormorant Garamond',serif;
+font-size:4rem;
+font-weight:600;
+color:#2f2f2f;
+letter-spacing:1px;
 }
 
 .hero p{
+margin-top:10px;
 font-size:1.2rem;
 letter-spacing:2px;
-margin-top:10px;
+color:#5a5a5a;
 }
 
 .countdown{
 margin-top:20px;
+font-size:1.1rem;
+background:#ffffff;
 display:inline-block;
 padding:10px 18px;
 border-radius:30px;
-background:rgba(255,255,255,0.15);
+box-shadow:0 5px 15px rgba(0,0,0,0.05);
 }
 
 /* ---------------- SECTIONS ---------------- */
@@ -100,12 +71,10 @@ background:rgba(255,255,255,0.15);
 section{
 max-width:900px;
 margin:60px auto;
-background:rgba(255,255,255,0.92);
+background:white;
 padding:50px 35px;
-border-radius:22px;
-box-shadow:0 10px 35px rgba(0,0,0,0.05);
-position:relative;
-z-index:2;
+border-radius:20px;
+box-shadow:0 10px 35px rgba(0,0,0,0.06);
 text-align:center;
 }
 
@@ -149,7 +118,7 @@ left:-2px;
 top:5px;
 width:14px;
 height:14px;
-background:#9aa87a;
+background:#8b6f60;
 border-radius:50%;
 border:3px solid white;
 box-shadow:0 0 0 2px #d8c3b2;
@@ -159,6 +128,17 @@ box-shadow:0 0 0 2px #d8c3b2;
 font-weight:600;
 color:#8b6f60;
 margin-bottom:5px;
+}
+
+.timeline-item h3{
+margin:0;
+font-size:1.1rem;
+}
+
+.timeline-item p{
+margin:3px 0 0;
+color:#777;
+font-size:0.95rem;
 }
 
 /* ---------------- DRESS CODE ---------------- */
@@ -180,7 +160,8 @@ font-size:0.9rem;
 width:55px;
 height:55px;
 border-radius:50%;
-margin:auto 0 8px;
+margin:auto;
+margin-bottom:8px;
 box-shadow:0 4px 10px rgba(0,0,0,0.08);
 }
 
@@ -200,7 +181,7 @@ margin-top:25px;
 }
 
 .button{
-background:#9aa87a;
+background:#8b6f60;
 color:white;
 padding:14px 24px;
 border-radius:40px;
@@ -209,7 +190,7 @@ transition:0.3s;
 }
 
 .button:hover{
-background:#7f8f64;
+background:#6f564a;
 transform:scale(1.05);
 }
 
@@ -217,10 +198,13 @@ transform:scale(1.05);
 
 @media(max-width:700px){
 
-.hero h1{font-size:3.5rem;}
+.hero h1{
+font-size:2.8rem;
+}
 
-.olivier{display:none;} /* on cache les branches sur mobile */
-
+section{
+padding:40px 20px;
+}
 }
 
 </style>
@@ -228,20 +212,14 @@ transform:scale(1.05);
 
 <body>
 
-<!-- 🌿 BRANCHES OLIVIER -->
-<img class="olivier gauche" src="photos/olivier-gauche.png">
-<img class="olivier droite" src="photos/olivier-droite.png">
-
 <!-- HERO -->
 <div class="hero">
-
   <div class="hero-content">
     <h1>Jade & Renaud</h1>
     <p>04 septembre 2027</p>
 
     <div class="countdown" id="countdown"></div>
   </div>
-
 </div>
 
 <!-- MESSAGE -->
@@ -258,24 +236,24 @@ transform:scale(1.05);
 
   <div class="timeline-item">
     <div class="time">15h30</div>
-    Cérémonie officielle<br>
-    Mairie de L'Isle-Jourdain
+    <h3>Cérémonie officielle</h3>
+    <p>Mairie de L'Isle-Jourdain</p>
   </div>
 
   <div class="timeline-item">
     <div class="time">17h00</div>
-    Cérémonie laïque<br>
-    Domaine de Solomiac
+    <h3>Cérémonie laïque</h3>
+    <p>Domaine de Solomiac</p>
   </div>
 
   <div class="timeline-item">
     <div class="time">18h00</div>
-    Vin d'honneur
+    <h3>Vin d'honneur</h3>
   </div>
 
   <div class="timeline-item">
     <div class="time">19h00</div>
-    Repas & soirée
+    <h3>Repas & soirée</h3>
   </div>
 
 </div>
@@ -285,11 +263,12 @@ transform:scale(1.05);
 <section>
 <h2>Dress Code</h2>
 
-<h3 style="font-family:'Cormorant Garamond',serif;color:#8b6f60;font-size:1.8rem;">
+<h3 style="font-family:'Cormorant Garamond',serif; color:#8b6f60; font-size:1.8rem;">
 La Dolce Vita
 </h3>
 
-<p>
+<p style="margin-top:10px;">
+Tenue élégante inspirée des étés italiens.<br>
 Lin, rose poudré, blanc cassé et olive.
 </p>
 
@@ -324,12 +303,13 @@ href="https://www.google.com/maps/search/?api=1&query=Domaine+de+Solomiac">
 
 <script>
 
-/* COUNTDOWN */
-const target = new Date("2027-09-04T00:00:00").getTime();
+/* ---------------- COUNTDOWN ---------------- */
 
-function update(){
+const targetDate = new Date("2027-09-04T00:00:00").getTime();
+
+function updateCountdown(){
 const now = new Date().getTime();
-const diff = target - now;
+const diff = targetDate - now;
 
 const days = Math.floor(diff / (1000*60*60*24));
 
@@ -337,8 +317,8 @@ document.getElementById("countdown").innerText =
 "⏳ " + days + " jours restants";
 }
 
-update();
-setInterval(update, 3600000);
+updateCountdown();
+setInterval(updateCountdown, 1000*60*60);
 
 </script>
 
