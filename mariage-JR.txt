@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Empêche le référencement -->
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Mariage de Renaud & [Prénom]</title>
+
+    <style>
+        body{
+            margin:0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background:#f8f5ef;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+            color:#444;
+        }
+
+        .container{
+            background:white;
+            padding:50px 40px;
+            border-radius:18px;
+            max-width:500px;
+            text-align:center;
+            box-shadow:0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        h1{
+            margin-top:0;
+            font-size:2em;
+            color:#7b5b45;
+        }
+
+        p{
+            font-size:1.1em;
+            line-height:1.6;
+        }
+
+        .btn{
+            display:inline-block;
+            margin-top:30px;
+            padding:16px 35px;
+            background:#7b5b45;
+            color:white;
+            text-decoration:none;
+            border-radius:10px;
+            font-size:1.1em;
+            transition:0.2s;
+        }
+
+        .btn:hover{
+            background:#5e4433;
+        }
+
+        .footer{
+            margin-top:35px;
+            font-size:0.9em;
+            color:#888;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>💍 Notre Mariage</h1>
+
+    <p>
+        Bienvenue !
+        <br><br>
+        Vous trouverez ci-dessous toutes les informations utiles
+        concernant notre journée.
+    </p>
+
+    <a class="btn" href="livret-mariage.pdf" target="_blank">
+        📄 Consulter le livret du mariage
+    </a>
+
+    <div class="footer">
+        Au plaisir de partager cette journée avec vous ❤️
+    </div>
+
+</div>
+
+</body>
+</html>
