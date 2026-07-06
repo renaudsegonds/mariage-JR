@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Jade & Renaud • 04 septembre 2027</title>
+<title>Jade & Renaud</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
+
+/* ---------------- GLOBAL ---------------- */
 
 *{
 margin:0;
@@ -17,98 +17,163 @@ padding:0;
 box-sizing:border-box;
 }
 
-html{
-scroll-behavior:smooth;
-}
-
 body{
 font-family:'Montserrat',sans-serif;
 background:#f8f6f3;
 color:#4d4d4d;
-line-height:1.8;
+line-height:1.7;
 }
 
-.container{
-max-width:900px;
-margin:auto;
-padding:40px 20px;
-}
+/* ---------------- HERO ---------------- */
 
-section{
-background:white;
-margin:35px 0;
-padding:55px 40px;
-border-radius:20px;
-box-shadow:0 10px 35px rgba(0,0,0,.06);
+.hero{
+height:100vh;
+background:url("photos/nous.jpg") center/cover no-repeat;
+display:flex;
+align-items:center;
+justify-content:center;
 text-align:center;
+position:relative;
+color:white;
 }
 
-h1{
+.hero::after{
+content:"";
+position:absolute;
+top:0;left:0;right:0;bottom:0;
+background:rgba(0,0,0,0.35);
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+padding:20px;
+}
+
+.hero h1{
 font-family:'Cormorant Garamond',serif;
 font-size:4rem;
-color:#8b6f60;
 font-weight:600;
+}
+
+.hero p{
+margin-top:10px;
+font-size:1.2rem;
+letter-spacing:2px;
+}
+
+.countdown{
+margin-top:20px;
+font-size:1.1rem;
+background:rgba(255,255,255,0.15);
+display:inline-block;
+padding:10px 18px;
+border-radius:30px;
+}
+
+/* ---------------- SECTIONS ---------------- */
+
+section{
+max-width:900px;
+margin:60px auto;
+background:white;
+padding:50px 35px;
+border-radius:20px;
+box-shadow:0 10px 35px rgba(0,0,0,0.06);
+text-align:center;
 }
 
 h2{
 font-family:'Cormorant Garamond',serif;
-font-size:2.4rem;
-margin-bottom:25px;
+font-size:2.3rem;
 color:#8b6f60;
+margin-bottom:25px;
 }
 
-.date{
-font-size:1.2rem;
-letter-spacing:3px;
-margin:10px 0 35px;
-}
+/* ---------------- TIMELINE ---------------- */
 
-.subtitle{
-font-size:1.15rem;
-}
-
-.planning{
-max-width:500px;
+.timeline{
+position:relative;
+max-width:650px;
 margin:auto;
 text-align:left;
-font-size:1.05rem;
+padding-left:30px;
 }
 
-.planning p{
-margin:18px 0;
+.timeline::before{
+content:"";
+position:absolute;
+left:10px;
+top:0;
+bottom:0;
+width:2px;
+background:#d8c3b2;
+}
+
+.timeline-item{
+position:relative;
+margin-bottom:30px;
+padding-left:25px;
+opacity:0;
+transform:translateY(20px);
+animation:fadeUp 0.8s forwards;
+}
+
+.timeline-item:nth-child(2){animation-delay:0.1s;}
+.timeline-item:nth-child(3){animation-delay:0.2s;}
+.timeline-item:nth-child(4){animation-delay:0.3s;}
+
+.timeline-item::before{
+content:"";
+position:absolute;
+left:-2px;
+top:5px;
+width:14px;
+height:14px;
+background:#8b6f60;
+border-radius:50%;
+border:3px solid white;
+box-shadow:0 0 0 2px #d8c3b2;
 }
 
 .time{
 font-weight:600;
 color:#8b6f60;
-display:inline-block;
-width:70px;
+margin-bottom:5px;
 }
 
-.dress{
-max-width:650px;
-margin:auto;
+.timeline-item h3{
+margin:0;
+font-size:1.1rem;
 }
+
+.timeline-item p{
+margin:3px 0 0;
+color:#777;
+font-size:0.95rem;
+}
+
+/* ---------------- DRESS CODE ---------------- */
 
 .palette{
 display:flex;
 justify-content:center;
 gap:20px;
-margin-top:35px;
 flex-wrap:wrap;
+margin-top:25px;
 }
 
 .color{
 text-align:center;
-font-size:.9rem;
+font-size:0.9rem;
 }
 
 .circle{
 width:55px;
 height:55px;
 border-radius:50%;
-margin:auto auto 10px;
-border:2px solid #ddd;
+margin:auto 0 8px;
+box-shadow:0 4px 10px rgba(0,0,0,0.08);
 }
 
 .lin{background:#E8DFC8;}
@@ -116,181 +181,169 @@ border:2px solid #ddd;
 .blanc{background:#F4F1EA;}
 .olive{background:#7D8260;}
 
+/* ---------------- BUTTONS ---------------- */
+
 .buttons{
 display:flex;
 justify-content:center;
-gap:20px;
+gap:15px;
 flex-wrap:wrap;
-margin-top:35px;
+margin-top:25px;
 }
 
-a.button{
+.button{
 background:#8b6f60;
 color:white;
-padding:14px 28px;
+padding:14px 24px;
 border-radius:40px;
 text-decoration:none;
-transition:.3s;
+transition:0.3s;
 }
 
-a.button:hover{
+.button:hover{
 background:#6f564a;
+transform:scale(1.05);
 }
 
-footer{
-text-align:center;
-padding:40px;
-font-size:1.1rem;
-color:#777;
+/* ---------------- ANIMATION ---------------- */
+
+@keyframes fadeUp{
+to{
+opacity:1;
+transform:translateY(0);
 }
+}
+
+/* ---------------- RESPONSIVE ---------------- */
 
 @media(max-width:700px){
 
+.hero h1{font-size:2.8rem;}
+
 section{
-padding:40px 25px;
+padding:40px 20px;
 }
 
-h1{
-font-size:3rem;
-}
-
-h2{
-font-size:2rem;
-}
-
-.planning{
-text-align:center;
-}
-
-.time{
-display:block;
-width:auto;
-margin-bottom:3px;
+.timeline{
+padding-left:20px;
 }
 
 }
 
 </style>
-
 </head>
 
 <body>
 
-<div class="container">
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <h1>Jade & Renaud</h1>
+    <p>04 septembre 2027</p>
 
-<section>
-
-<h1>Jade & Renaud</h1>
-
-<div class="date">
-04 septembre 2027
+    <div class="countdown" id="countdown"></div>
+  </div>
 </div>
 
-<p class="subtitle">
-Nous avons hâte de partager cette journée avec vous ❤️
-</p>
-
+<!-- MESSAGE -->
+<section>
+<h2>Bienvenue</h2>
+<p>Nous avons hâte de partager cette journée avec vous ❤️</p>
 </section>
 
+<!-- TIMELINE -->
 <section>
-
 <h2>Planning</h2>
 
-<div class="planning">
+<div class="timeline">
 
-<p><span class="time">15h30</span> Cérémonie officielle — Mairie de L'Isle-Jourdain</p>
+  <div class="timeline-item">
+    <div class="time">15h30</div>
+    <h3>Cérémonie officielle</h3>
+    <p>Mairie de L'Isle-Jourdain</p>
+  </div>
 
-<p><span class="time">17h00</span> Cérémonie laïque & réception — Domaine de Solomiac</p>
+  <div class="timeline-item">
+    <div class="time">17h00</div>
+    <h3>Cérémonie laïque</h3>
+    <p>Domaine de Solomiac</p>
+  </div>
 
-<p><span class="time">18h00</span> Vin d'honneur</p>
+  <div class="timeline-item">
+    <div class="time">18h00</div>
+    <h3>Vin d'honneur</h3>
+  </div>
 
-<p><span class="time">19h00</span> Repas & soirée</p>
+  <div class="timeline-item">
+    <div class="time">19h00</div>
+    <h3>Repas & soirée</h3>
+  </div>
 
 </div>
-
 </section>
 
+<!-- DRESS CODE -->
 <section>
-
 <h2>Dress Code</h2>
 
-<h3 style="font-family:'Cormorant Garamond',serif;font-size:2rem;margin-bottom:20px;color:#8b6f60;">
+<h3 style="font-family:'Cormorant Garamond',serif; color:#8b6f60; font-size:1.8rem;">
 La Dolce Vita
 </h3>
 
-<div class="dress">
-
-<p>
-Une tenue élégante inspirée des étés italiens.
-<br><br>
-Privilégiez les matières naturelles, les tissus fluides et les coupes intemporelles.
-<br><br>
-Nous vous invitons à porter des tons <strong>lin</strong>, <strong>rose poudré</strong>, <strong>blanc cassé</strong> ou <strong>olive</strong>.
-<br><br>
-Merci d'éviter le <strong>blanc intégral</strong>, réservé à la mariée, ainsi que les couleurs fluo.
+<p style="margin-top:10px;">
+Tenue élégante inspirée des étés italiens.<br>
+Lin, rose poudré, blanc cassé et olive.
 </p>
 
 <div class="palette">
 
-<div class="color">
-<div class="circle lin"></div>
-Lin
-</div>
-
-<div class="color">
-<div class="circle rose"></div>
-Rose poudré
-</div>
-
-<div class="color">
-<div class="circle blanc"></div>
-Blanc cassé
-</div>
-
-<div class="color">
-<div class="circle olive"></div>
-Olive
-</div>
+<div class="color"><div class="circle lin"></div>Lin</div>
+<div class="color"><div class="circle rose"></div>Rose poudré</div>
+<div class="color"><div class="circle blanc"></div>Blanc cassé</div>
+<div class="color"><div class="circle olive"></div>Olive</div>
 
 </div>
-
-</div>
-
 </section>
 
+<!-- LIEUX -->
 <section>
-
 <h2>Lieux</h2>
-
-<p>
-Retrouvez facilement les deux lieux de cette journée.
-</p>
 
 <div class="buttons">
 
-<a class="button"
-href="https://maps.app.goo.gl/4mVyY1NfYB2EjK8V7"
-target="_blank">
-📍 Mairie de L'Isle-Jourdain
+<a class="button" target="_blank"
+href="https://www.google.com/maps/search/?api=1&query=Mairie+de+L%27Isle-Jourdain">
+📍 Mairie
 </a>
 
-<a class="button"
-href="https://maps.app.goo.gl/W5L1qfDkAcqJXXnS8"
-target="_blank">
-📍 Domaine de Solomiac
+<a class="button" target="_blank"
+href="https://www.google.com/maps/search/?api=1&query=Domaine+de+Solomiac">
+📍 Domaine
 </a>
 
 </div>
-
 </section>
 
-<footer>
+<script>
 
-À très bientôt ❤️
+/* ---------------- COUNTDOWN ---------------- */
 
-</footer>
+const targetDate = new Date("2027-09-04T00:00:00").getTime();
 
-</div>
+function updateCountdown(){
+const now = new Date().getTime();
+const diff = targetDate - now;
+
+const days = Math.floor(diff / (1000*60*60*24));
+
+document.getElementById("countdown").innerText =
+"⏳ " + days + " jours restants";
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000*60*60);
+
+</script>
 
 </body>
 </html>
