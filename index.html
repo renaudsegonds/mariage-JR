@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Page non référencée par les moteurs de recherche : accessible uniquement via le lien / QR code -->
+  <meta name="robots" content="noindex, nofollow">
+  <title>Jade &amp; Renaud, on se marie !</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%93%8D%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..600,50;1,9..144,300..600,50&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --papier: #FBFAF5;
+      --encre: #23372C;      /* vert forêt profond : texte principal */
+      --sauge: #7E8D74;      /* accent végétal doux */
+      --laiton: #B08D57;     /* filets et détails */
+      --creme-carte: #F4F2E9;
+      --action: #2F5241;     /* boutons GPS */
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--papier);
+      color: var(--encre);
+      font-family: 'Karla', sans-serif;
+      font-size: 1.0625rem;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      max-width: 30rem;
+      margin: 0 auto;
+      padding: 3.5rem 1.5rem 4rem;
+    }
+
+    /* === Héro === */
+    .hero { text-align: center; }
+
+    .eyebrow {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--laiton);
+    }
+
+    .noms {
+      font-family: 'Fraunces', serif;
+      font-weight: 380;
+      font-size: clamp(3rem, 14vw, 4.4rem);
+      line-height: 1.04;
+      margin-top: 1.2rem;
+      letter-spacing: -0.01em;
+    }
+
+    .noms .et {
+      display: block;
+      font-style: italic;
+      font-weight: 300;
+      font-size: 0.42em;
+      color: var(--sauge);
+      margin: 0.35em 0;
+    }
+
+    .date-lockup {
+      margin-top: 1.6rem;
+      font-family: 'Fraunces', serif;
+      font-size: 1.35rem;
+      font-style: italic;
+      font-weight: 340;
+    }
+
+    .lieu-court {
+      margin-top: 0.3rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--sauge);
+    }
+
+    /* === Le sentier : fil pointillé signature === */
+    .sentier {
+      display: flex;
+      justify-content: center;
+      padding: 2.2rem 0;
+    }
+
+    .sentier svg { display: block; }
+
+    .sentier .trace {
+      stroke: var(--sauge);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-dasharray: 0.1 9;
+      fill: none;
+    }
+
+    /* === Sections === */
+    .section-titre {
+      font-family: 'Fraunces', serif;
+      font-weight: 420;
+      font-size: 1.55rem;
+      text-align: center;
+      margin-bottom: 1.4rem;
+    }
+
+    .section-titre .pin {
+      display: block;
+      font-size: 1.1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    /* Carte lieu */
+    .carte {
+      background: var(--creme-carte);
+      border-radius: 1.1rem;
+      padding: 1.6rem 1.4rem;
+      text-align: center;
+    }
+
+    .carte .nom-lieu {
+      font-family: 'Fraunces', serif;
+      font-size: 1.3rem;
+      font-weight: 460;
+    }
+
+    .carte .adresse {
+      margin-top: 0.4rem;
+      color: var(--encre);
+      opacity: 0.75;
+      font-size: 0.98rem;
+    }
+
+    .boutons-gps {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-top: 1.3rem;
+    }
+
+    .btn {
+      display: block;
+      padding: 0.85rem 1rem;
+      border-radius: 0.7rem;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      text-align: center;
+      transition: transform 0.12s ease;
+    }
+
+    .btn:active { transform: scale(0.98); }
+
+    .btn-primaire {
+      background: var(--action);
+      color: var(--papier);
+    }
+
+    .btn-secondaire {
+      background: transparent;
+      color: var(--action);
+      border: 1.5px solid var(--action);
+    }
+
+    .rang-secondaire {
+      display: flex;
+      gap: 0.6rem;
+    }
+
+    .rang-secondaire .btn { flex: 1; }
+
+    /* Programme */
+    .programme { list-style: none; }
+
+    .programme li {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      padding: 0.7rem 0.2rem;
+      border-bottom: 1px solid rgba(176, 141, 87, 0.28);
+    }
+
+    .programme li:last-child { border-bottom: none; }
+
+    .programme .heure {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      min-width: 4.2rem;
+      color: var(--laiton);
+    }
+
+    /* Infos pratiques */
+    .infos p + p { margin-top: 0.9rem; }
+
+    .infos strong {
+      display: block;
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sauge);
+      margin-bottom: 0.15rem;
+    }
+
+    .infos a { color: var(--action); font-weight: 700; white-space: nowrap; }
+
+    /* Pied */
+    .pied {
+      text-align: center;
+      margin-top: 3rem;
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      color: var(--sauge);
+      font-size: 1.05rem;
+    }
+
+    /* === Entrée en scène === */
+    @media (prefers-reduced-motion: no-preference) {
+      .hero > *, .apparait {
+        opacity: 0;
+        transform: translateY(14px);
+        animation: lever 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+      }
+      .hero .eyebrow      { animation-delay: 0.1s; }
+      .hero .noms         { animation-delay: 0.25s; }
+      .hero .date-lockup  { animation-delay: 0.45s; }
+      .hero .lieu-court   { animation-delay: 0.55s; }
+      .apparait           { animation-delay: 0.7s; }
+
+      @keyframes lever {
+        to { opacity: 1; transform: translateY(0); }
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+
+    <!-- ═══════════════════════════════════════════════════════════
+         HÉRO : noms, date, lieu en un coup d'œil
+         ⚠️ À MODIFIER : les noms, la date et la commune ci-dessous
+         ═══════════════════════════════════════════════════════════ -->
+    <header class="hero">
+      <p class="eyebrow">On se marie !</p>
+      <h1 class="noms">Jade<span class="et">&amp;</span>Renaud</h1>
+      <p class="date-lockup">Samedi 00 mois 2027</p>
+      <p class="lieu-court">Commune, Département</p>
+    </header>
+
+    <div class="sentier apparait" aria-hidden="true">
+      <svg width="24" height="90" viewBox="0 0 24 90">
+        <path class="trace" d="M12 4 C 4 24, 20 40, 12 60 C 6 74, 14 82, 12 86" />
+      </svg>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         LIEU : le point GPS, cœur de la page
+         ⚠️ À MODIFIER :
+         1. Le nom du lieu et l'adresse complète
+         2. LES COORDONNÉES GPS dans les 3 liens ci-dessous :
+            remplacer 43.6412,-1.4462 par les vraies coordonnées
+            (clic droit sur le lieu dans Google Maps → copier les coordonnées)
+         ═══════════════════════════════════════════════════════════ -->
+    <section class="apparait">
+      <h2 class="section-titre"><span class="pin">📍</span>Le lieu</h2>
+      <div class="carte">
+        <p class="nom-lieu">Nom du domaine</p>
+        <p class="adresse">123 route de l'Exemple<br>40000 Commune</p>
+        <div class="boutons-gps">
+          <a class="btn btn-primaire" href="https://www.google.com/maps/search/?api=1&amp;query=43.6412,-1.4462">
+            Ouvrir dans Google Maps
+          </a>
+          <div class="rang-secondaire">
+            <a class="btn btn-secondaire" href="https://waze.com/ul?ll=43.6412,-1.4462&amp;navigate=yes">Waze</a>
+            <a class="btn btn-secondaire" href="https://maps.apple.com/?ll=43.6412,-1.4462&amp;q=Mariage%20Jade%20%26%20Renaud">Plans</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="sentier apparait" aria-hidden="true">
+      <svg width="24" height="70" viewBox="0 0 24 70">
+        <path class="trace" d="M12 4 C 20 20, 4 36, 12 50 C 16 60, 10 64, 12 66" />
+      </svg>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         PROGRAMME : 3-4 lignes maximum
+         ⚠️ À MODIFIER : horaires et étapes de la journée
+         ═══════════════════════════════════════════════════════════ -->
+    <section class="apparait">
+      <h2 class="section-titre">La journée</h2>
+      <ul class="programme">
+        <li><span class="heure">15 h 00</span><span>Cérémonie</span></li>
+        <li><span class="heure">17 h 00</span><span>Vin d'honneur</span></li>
+        <li><span class="heure">20 h 00</span><span>Dîner &amp; soirée</span></li>
+      </ul>
+    </section>
+
+    <div class="sentier apparait" aria-hidden="true">
+      <svg width="24" height="70" viewBox="0 0 24 70">
+        <path class="trace" d="M12 4 C 5 18, 19 34, 12 48 C 8 58, 15 64, 12 66" />
+      </svg>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         INFOS PRATIQUES : garder le minimum
+         ⚠️ À MODIFIER : numéro de téléphone (et supprimer les blocs inutiles)
+         ═══════════════════════════════════════════════════════════ -->
+    <section class="apparait infos">
+      <h2 class="section-titre">Bon à savoir</h2>
+      <p><strong>Confirmer votre venue</strong>
+        Un petit message à Jade ou Renaud : <a href="tel:+33600000000">06 00 00 00 00</a></p>
+      <p><strong>Dress code</strong>
+        Tenue de cérémonie, chic et confortable.</p>
+      <p><strong>Hébergement</strong>
+        Quelques idées de logements à proximité sur demande.</p>
+    </section>
+
+    <p class="pied apparait">On a hâte de vous y retrouver ! J &amp; R</p>
+
+  </main>
+</body>
+</html>
