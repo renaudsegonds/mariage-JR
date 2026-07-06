@@ -137,11 +137,29 @@
       font-size: 0.98rem;
     }
 
+    /* Carte interactive (OpenStreetMap, sans clé API) */
+    .carte-embed {
+      margin-top: 1.3rem;
+      border-radius: 0.8rem;
+      overflow: hidden;
+      border: 1px solid rgba(176, 141, 87, 0.4);
+      line-height: 0;
+      background: #e8ece4;
+    }
+
+    .carte-embed iframe {
+      width: 100%;
+      height: 210px;
+      border: 0;
+      display: block;
+      filter: saturate(0.9);
+    }
+
     .boutons-gps {
       display: flex;
       flex-direction: column;
       gap: 0.6rem;
-      margin-top: 1.3rem;
+      margin-top: 1rem;
     }
 
     .btn {
@@ -262,23 +280,24 @@
     <!-- ═══════════════════════════════════════════════════════════
          LIEU : le point GPS, cœur de la page
          ⚠️ À MODIFIER :
-         1. Le nom du lieu et l'adresse complète
-         2. LES COORDONNÉES GPS dans les 3 liens ci-dessous :
-            remplacer 43.6412,-1.4462 par les vraies coordonnées
-            (clic droit sur le lieu dans Google Maps → copier les coordonnées)
+         1. Le nom du lieu et l'adresse complète (juste en dessous)
+         2. LES COORDONNÉES GPS : un seul endroit à changer, tout en bas
+            de la page dans le bloc <script> (constantes LAT et LNG).
+            La carte ET les 3 boutons se mettent à jour automatiquement.
          ═══════════════════════════════════════════════════════════ -->
     <section class="apparait">
       <h2 class="section-titre"><span class="pin">📍</span>Le lieu</h2>
       <div class="carte">
         <p class="nom-lieu">Nom du domaine</p>
         <p class="adresse">123 route de l'Exemple<br>40000 Commune</p>
+        <div class="carte-embed">
+          <iframe id="carte-osm" title="Carte du lieu du mariage" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
         <div class="boutons-gps">
-          <a class="btn btn-primaire" href="https://www.google.com/maps/search/?api=1&amp;query=43.6412,-1.4462">
-            Ouvrir dans Google Maps
-          </a>
+          <a id="lien-google" class="btn btn-primaire" href="#">Ouvrir dans Google Maps</a>
           <div class="rang-secondaire">
-            <a class="btn btn-secondaire" href="https://waze.com/ul?ll=43.6412,-1.4462&amp;navigate=yes">Waze</a>
-            <a class="btn btn-secondaire" href="https://maps.apple.com/?ll=43.6412,-1.4462&amp;q=Mariage%20Jade%20%26%20Renaud">Plans</a>
+            <a id="lien-waze" class="btn btn-secondaire" href="#">Waze</a>
+            <a id="lien-plans" class="btn btn-secondaire" href="#">Plans</a>
           </div>
         </div>
       </div>
@@ -326,5 +345,36 @@
     <p class="pied apparait">On a hâte de vous y retrouver ! J &amp; R</p>
 
   </main>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       ⚠️ COORDONNÉES GPS DU LIEU : le SEUL endroit à changer.
+       Sur Google Maps, clic droit sur le lieu → le premier élément
+       du menu copie les coordonnées (ex. "43.6892, -1.3729").
+       Coller la latitude dans LAT et la longitude dans LNG ci-dessous.
+       La carte et les 3 boutons se mettent à jour tout seuls.
+       ═══════════════════════════════════════════════════════════ -->
+  <script>
+    var LAT = 43.6412;                        // latitude
+    var LNG = -1.4462;                         // longitude
+    var LIEU = "Mariage Jade & Renaud";        // libellé du repère (Plans)
+
+    (function () {
+      // Cadre de la carte : petit encadré centré sur le point.
+      var dLat = 0.004;
+      var dLng = dLat / Math.cos(LAT * Math.PI / 180) * 1.55;  // corrige l'étirement E/O
+      var bbox = [LNG - dLng, LAT - dLat, LNG + dLng, LAT + dLat].join(",");
+
+      document.getElementById("carte-osm").src =
+        "https://www.openstreetmap.org/export/embed.html?bbox=" + bbox +
+        "&layer=mapnik&marker=" + LAT + "," + LNG;
+
+      document.getElementById("lien-google").href =
+        "https://www.google.com/maps/search/?api=1&query=" + LAT + "," + LNG;
+      document.getElementById("lien-waze").href =
+        "https://waze.com/ul?ll=" + LAT + "," + LNG + "&navigate=yes";
+      document.getElementById("lien-plans").href =
+        "https://maps.apple.com/?ll=" + LAT + "," + LNG + "&q=" + encodeURIComponent(LIEU);
+    })();
+  </script>
 </body>
 </html>
