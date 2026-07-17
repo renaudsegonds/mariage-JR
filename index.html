@@ -36,12 +36,22 @@ main{margin-top:-58px;position:relative;z-index:3;padding:0 18px}
 .event h3{font-size:1rem;font-weight:500}
 .event p{font-size:.84rem;color:#857970;line-height:1.45}
 .script{font-family:'Parisienne',cursive;font-size:2rem;color:#a86f54;margin-bottom:12px}
-.palette{margin-top:26px;
-display:grid;
-grid-template-columns:repeat(4,1fr);
+.palette{
+    margin-top:26px;
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:18px 10px;
+    align-items:start;
+}
 gap:16px;
 }
-.color{font-size:.72rem;color:#7c716a}
+.color{
+    font-size:.72rem;
+    color:#7c716a;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
 .circle{width:42px;height:42px;border-radius:50%;margin:0 auto 8px;box-shadow:0 7px 16px rgba(77,59,44,.11)}
 .blanc{background:#F4F1EA;}
 .lin{background:#E8DFC8;}
