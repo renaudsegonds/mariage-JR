@@ -4,149 +4,238 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>Jade & Renaud</title>
+<title>Jade & Renaud — 04 septembre 2027</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Montserrat:wght@300;400;500;600&family=Parisienne&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&family=Parisienne&display=swap" rel="stylesheet">
 <style>
-:root{--cream:#f5efe7;--paper:rgba(255,255,255,.84);--brown:#3d3028;--gold:#a67b5b;--olive:#7d8260;--rose:#ddb8b8;--linen:#e8dfc8;--offwhite:#f4f1ea}
-*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --cream:#f7f2e9;
+  --paper:#fffdf8;
+  --ink:#56633f;
+  --ink-dark:#3f4d2f;
+  --line:#d9d0bf;
+  --muted:#7d766c;
+  --button:#66724e;
+  --button-hover:#566140;
+  --white:#f7f4ec;
+  --linen:#e8dcc1;
+  --yellow:#d49a1e;
+  --terracotta:#d35f1c;
+  --coral:#e2686b;
+  --raspberry:#d6396a;
+  --bordeaux:#8f062e;
+  --olive:#687548;
+}
+*{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'Montserrat',sans-serif;color:#514740;background:var(--cream);overflow-x:hidden}
-.page{width:min(100%,720px);margin:auto;padding-bottom:40px}
-.hero{min-height:100svh;padding:15vh 22px 100px;display:flex;justify-content:center;text-align:center;position:relative;background:linear-gradient(to bottom,rgba(249,244,237,.10),rgba(249,244,237,.02) 48%,rgba(245,239,231,.90) 92%,var(--cream)),url("fond.png") center/cover no-repeat}
-.hero-content{position:relative;z-index:2}
-.names{font-family:'Cormorant Garamond',serif;font-size:clamp(3.4rem,12vw,5.8rem);line-height:.95;color:var(--brown);text-shadow:0 2px 18px rgba(255,255,255,.55)}
-.names span{color:#b48a6c;font-weight:500}
-.ornament{display:flex;align-items:center;justify-content:center;gap:10px;margin:24px auto 16px;color:var(--olive)}
-.ornament:before,.ornament:after{content:"";width:52px;height:1px;background:rgba(139,104,79,.55)}
-.date{text-transform:uppercase;letter-spacing:.32em;font-size:.82rem;color:#956d51;font-weight:600}
-.countdown{margin-top:34px;display:inline-flex;align-items:center;gap:10px;padding:16px 24px;border-radius:999px;background:rgba(255,255,255,.88);backdrop-filter:blur(12px);box-shadow:0 14px 35px rgba(54,38,24,.16)}
-main{margin-top:-58px;position:relative;z-index:3;padding:0 18px}
-.card{margin-bottom:24px;padding:38px 26px;background:var(--paper);border:1px solid rgba(255,255,255,.65);border-radius:26px;backdrop-filter:blur(16px);box-shadow:0 18px 45px rgba(62,44,29,.14);text-align:center}
-.card h2{font-size:.98rem;text-transform:uppercase;letter-spacing:.18em;color:#9a6d4e}
-.mini{color:var(--olive);margin:10px 0 24px}
-.card p{font-size:.98rem;line-height:1.7}
-.timeline{max-width:500px;margin:auto;padding-left:30px;position:relative;text-align:left}
-.timeline:before{content:"";position:absolute;left:8px;top:8px;bottom:8px;width:2px;background:#d4b294}
-.item{position:relative;display:grid;grid-template-columns:76px 1fr;gap:8px;padding-bottom:24px}
-.item:last-child{padding-bottom:0}
-.item:before{content:"";position:absolute;left:-28px;top:7px;width:12px;height:12px;border-radius:50%;background:#c49a75}
-.time{font-weight:600;color:#9b6b4c}
-.event h3{font-size:1rem;font-weight:500}
-.event p{font-size:.84rem;color:#857970;line-height:1.45}
-.script{font-family:'Parisienne',cursive;font-size:2rem;color:#a86f54;margin-bottom:12px}
-.palette{
-    margin-top:26px;
-    display:grid;
-    grid-template-columns:repeat(4,minmax(0,1fr));
-    gap:18px 10px;
-    align-items:start;
+body{
+  font-family:'Montserrat',sans-serif;
+  background:var(--cream);
+  color:var(--ink-dark);
+  overflow-x:hidden;
 }
-.color{
-    font-size:.72rem;
-    color:#7c716a;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
+a{color:inherit}
+.site{max-width:1180px;margin:0 auto;background:rgba(255,253,248,.72);box-shadow:0 0 45px rgba(77,65,45,.08)}
+.nav{
+  position:sticky;top:0;z-index:20;
+  display:flex;justify-content:center;gap:28px;
+  padding:18px 20px;
+  background:rgba(247,242,233,.92);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(86,99,63,.12);
 }
-.circle{width:42px;height:42px;border-radius:50%;margin:0 auto 8px;box-shadow:0 7px 16px rgba(77,59,44,.11)}
-.blanc{background:#F4F1EA;}
-.lin{background:#E8DFC8;}
-.jaune{background:#D49A1E;}
-.terracotta{background:#D35F1C;}
-.corail{background:#E2686B;}
-.framboise{background:#D6396A;}
-.bordeaux{background:#8F062E;}
-.olive{background:#5B6940;}
-.buttons{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.button{min-height:54px;display:flex;align-items:center;justify-content:center;gap:8px;border-radius:14px;text-decoration:none;color:white;background:linear-gradient(180deg,#858a68,#737856);box-shadow:0 10px 22px rgba(88,94,61,.22)}
-.footer{text-align:center;color:#8a786a;font-size:.82rem;padding:12px 20px 0}
-@media(max-width:520px){.hero{min-height:88svh;background-position:58% center;padding-top:14vh}.names{font-size:3.55rem}.date{font-size:.75rem;letter-spacing:.22em}.card{padding:32px 20px;border-radius:22px}.buttons{grid-template-columns:1fr}}
+.nav a{text-decoration:none;font-family:'Cormorant Garamond',serif;font-size:1.12rem}
+.nav a:hover{color:#8b6c4a}
+.hero{
+  min-height:760px;
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  align-items:center;
+  gap:30px;
+  padding:65px 70px 45px;
+  position:relative;
+  overflow:hidden;
+}
+.hero:before{
+  content:"";
+  position:absolute;left:-35px;top:-20px;width:330px;height:300px;
+  background:url("images/olive-corner.svg") top left/contain no-repeat;
+  opacity:.95;
+}
+.hero-copy{position:relative;z-index:2;text-align:center}
+.names{
+  font-family:'Parisienne',cursive;
+  font-size:clamp(4rem,8vw,7.2rem);
+  line-height:1;
+  font-weight:400;
+  color:var(--ink);
+  margin-bottom:22px;
+}
+.invite{
+  font-family:'Parisienne',cursive;
+  font-size:clamp(1.8rem,3.5vw,2.7rem);
+  line-height:1.35;
+  max-width:620px;
+  margin:0 auto;
+}
+.heart-line{display:flex;align-items:center;justify-content:center;gap:14px;margin:28px 0;color:var(--ink)}
+.heart-line:before,.heart-line:after{content:"";width:80px;height:1px;background:var(--line)}
+.date{font-family:'Cormorant Garamond',serif;text-transform:uppercase;letter-spacing:.35em;font-size:1.35rem}
+.countdown{margin:22px auto 0;font-size:.9rem;color:var(--muted)}
+.hero-art img{width:100%;max-width:560px;display:block;margin:auto}
+.section{padding:58px 70px;border-top:1px solid var(--line)}
+.section-title{text-align:center;font-family:'Parisienne',cursive;font-size:3rem;font-weight:400;color:var(--ink)}
+.sprig{width:90px;height:auto;display:block;margin:8px auto 25px}
+.welcome{text-align:center;font-family:'Cormorant Garamond',serif;font-size:1.35rem}
+.columns{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0}
+.column{padding:10px 34px;min-height:520px}
+.column + .column{border-left:1px solid var(--line)}
+.column h2{text-align:center;font-family:'Parisienne',cursive;font-weight:400;font-size:2.6rem;color:var(--ink)}
+.timeline{position:relative;padding:10px 0 0 38px}
+.timeline:before{content:"";position:absolute;left:13px;top:22px;bottom:20px;width:1px;background:var(--ink)}
+.event{position:relative;padding:0 0 34px 18px}
+.event:before{content:"";position:absolute;left:-30px;top:7px;width:9px;height:9px;border-radius:50%;background:var(--ink)}
+.event time{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:600}
+.event h3{font-size:.95rem;font-weight:500;margin-top:2px}
+.event p{font-size:.84rem;color:var(--muted);line-height:1.45;margin-top:4px}
+.place{text-align:center;margin-bottom:28px}
+.place img{width:100%;max-width:250px;height:130px;object-fit:contain;margin-bottom:8px}
+.place h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:500;margin-bottom:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 18px;background:var(--button);color:#fff;text-decoration:none;border-radius:3px;font-family:'Cormorant Garamond',serif;font-size:1.1rem;transition:.2s}
+.btn:hover{background:var(--button-hover);transform:translateY(-1px)}
+.dress{text-align:center}
+.dress .script{font-family:'Parisienne',cursive;font-size:2.8rem;margin:12px 0 18px}
+.dress p{font-family:'Cormorant Garamond',serif;font-size:1.3rem;line-height:1.4}
+.palette{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px 10px;margin-top:28px}
+.color{font-size:.74rem;color:var(--muted);text-align:center}
+.circle{width:54px;height:54px;border-radius:50%;margin:0 auto 7px;border:1px solid rgba(60,50,40,.12)}
+.white{background:var(--white)}.linen{background:var(--linen)}.yellow{background:var(--yellow)}.terracotta{background:var(--terracotta)}.coral{background:var(--coral)}.raspberry{background:var(--raspberry)}.bordeaux{background:var(--bordeaux)}.olive{background:var(--olive)}
+.footer-art{position:relative;padding:68px 70px 25px;border-top:1px solid var(--line);min-height:330px;overflow:hidden;text-align:center}
+.footer-art:before{content:"";position:absolute;left:-30px;bottom:0;width:320px;height:270px;background:url("images/olive-corner.svg") left bottom/contain no-repeat;transform:rotate(180deg)}
+.footer-art:after{content:"";position:absolute;right:0;bottom:0;width:410px;height:230px;background:url("images/landscape.svg") right bottom/contain no-repeat}
+.footer-message{position:relative;z-index:2;font-family:'Parisienne',cursive;font-size:2.2rem;line-height:1.3;max-width:520px;margin:0 auto;color:var(--ink)}
+.bottom{background:var(--ink);color:#fff;text-align:center;padding:18px;font-family:'Parisienne',cursive;font-size:1.6rem}
+@media(max-width:900px){
+  .nav{gap:16px;overflow-x:auto;justify-content:flex-start}
+  .hero{grid-template-columns:1fr;padding:80px 28px 35px;min-height:auto}
+  .hero:before{width:220px;height:210px}
+  .hero-art{order:2}
+  .hero-art img{max-width:460px}
+  .section{padding:48px 24px}
+  .columns{grid-template-columns:1fr}
+  .column{padding:28px 10px;min-height:auto}
+  .column + .column{border-left:none;border-top:1px solid var(--line)}
+  .footer-art{padding:60px 24px 230px}
+}
+@media(max-width:520px){
+  .nav{display:none}
+  .hero{padding-top:100px}
+  .names{font-size:4rem}
+  .invite{font-size:2rem}
+  .date{font-size:1rem;letter-spacing:.25em}
+  .palette{grid-template-columns:repeat(4,minmax(0,1fr));gap:18px 4px}
+  .circle{width:42px;height:42px}
+  .color{font-size:.66rem}
+  .footer-art:before{width:220px;height:190px}
+  .footer-art:after{width:310px;height:180px}
+}
 </style>
 </head>
 <body>
-<div class="page">
-<header class="hero">
-<div class="hero-content">
-<h1 class="names">Jade <span>&</span> Renaud</h1>
-<div class="ornament">🌿</div>
-<p class="date">04 septembre 2027</p>
-<div class="countdown" id="countdown">Calcul du compte à rebours…</div>
-</div>
+<div class="site">
+<nav class="nav" aria-label="Navigation principale">
+  <a href="#accueil">Accueil</a>
+  <a href="#bienvenue">Bienvenue</a>
+  <a href="#planning">Planning</a>
+  <a href="#lieux">Lieux</a>
+  <a href="#dresscode">Dress code</a>
+</nav>
+
+<header class="hero" id="accueil">
+  <div class="hero-copy">
+    <h1 class="names">Jade &amp; Renaud</h1>
+    <p class="invite">Ont le plaisir de vous inviter à célébrer leur mariage le samedi</p>
+    <div class="heart-line">♡</div>
+    <p class="date">04 septembre 2027</p>
+    <p class="countdown" id="countdown">Calcul du compte à rebours…</p>
+  </div>
+  <div class="hero-art">
+    <img src="images/table-mariage.svg" alt="Illustration d'une table de mariage avec fleurs et bougies">
+  </div>
 </header>
-<main>
-<section class="card"><h2>Bienvenue</h2><div class="mini">— 🌿 —</div><p>Nous avons hâte de partager cette journée avec vous ♥</p></section>
-<section class="card">
-<h2>Planning</h2><div class="mini">— 🌿 —</div>
-<div class="timeline">
-<div class="item"><div class="time">15h30</div><div class="event"><h3>Cérémonie officielle</h3><p>Mairie de L'Isle-Jourdain</p></div></div>
-<div class="item"><div class="time">17h00</div><div class="event"><h3>Cérémonie laïque</h3><p>Domaine de Solomiac</p></div></div>
-<div class="item"><div class="time">18h00</div><div class="event"><h3>Vin d'honneur</h3></div></div>
-<div class="item"><div class="time">19h00</div><div class="event"><h3>Repas & soirée</h3></div></div>
-</div>
+
+<section class="section" id="bienvenue">
+  <h2 class="section-title">Bienvenue</h2>
+  <img class="sprig" src="images/sprig.svg" alt="">
+  <p class="welcome">Nous avons hâte de partager cette journée unique avec vous. ♥</p>
 </section>
-<section class="card">
-    <h2>Dress Code</h2>
-    <div class="mini">— 🌿 —</div>
-    <div class="script">La Dolce Vita</div>
 
-    <p>Tenue élégante inspirée des étés italiens.</p>
+<section class="section" id="planning">
+  <div class="columns">
+    <article class="column">
+      <h2>Planning</h2>
+      <img class="sprig" src="images/sprig.svg" alt="">
+      <div class="timeline">
+        <div class="event"><time>15h30</time><h3>Cérémonie officielle</h3><p>Mairie de L'Isle-Jourdain</p></div>
+        <div class="event"><time>17h00</time><h3>Cérémonie laïque</h3><p>Domaine de Solomiac</p></div>
+        <div class="event"><time>18h00</time><h3>Vin d'honneur</h3></div>
+        <div class="event"><time>19h00</time><h3>Repas &amp; soirée</h3></div>
+      </div>
+    </article>
 
-    <div class="palette">
-        <div class="color">
-            <div class="circle blanc"></div>
-            Blanc cassé
-        </div>
+    <article class="column" id="lieux">
+      <h2>Lieux</h2>
+      <img class="sprig" src="images/sprig.svg" alt="">
+      <div class="place">
+        <img src="images/mairie.svg" alt="Illustration de la mairie de L'Isle-Jourdain">
+        <h3>Mairie de L'Isle-Jourdain</h3>
+        <a class="btn" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/place/Mairie+de+L'Isle-Jourdain+(32600)/@43.6134416,1.0803358,18.44z/data=!4m6!3m5!1s0x12a94fbf78e4e341:0x51f80820abf1a43a!8m2!3d43.6133617!4d1.0815682!16s%2Fg%2F1tfjbq2m?entry=ttu">Voir sur la carte</a>
+      </div>
+      <div class="place">
+        <img src="images/domaine.svg" alt="Illustration d'un domaine de réception">
+        <h3>Domaine de Solomiac</h3>
+        <a class="btn" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=Domaine+de+Solomiac">Voir sur la carte</a>
+      </div>
+    </article>
 
-        <div class="color">
-            <div class="circle lin"></div>
-            Lin
-        </div>
-
-        <div class="color">
-            <div class="circle jaune"></div>
-            Jaune
-        </div>
-
-        <div class="color">
-            <div class="circle terracotta"></div>
-            Terracotta
-        </div>
-
-        <div class="color">
-            <div class="circle corail"></div>
-            Corail
-        </div>
-
-        <div class="color">
-            <div class="circle framboise"></div>
-            Framboise
-        </div>
-
-        <div class="color">
-            <div class="circle bordeaux"></div>
-            Bordeaux
-        </div>
-
-        <div class="color">
-            <div class="circle olive"></div>
-            Olive
-        </div>
-    </div>
+    <article class="column dress" id="dresscode">
+      <h2>Dress Code</h2>
+      <img class="sprig" src="images/sprig.svg" alt="">
+      <div class="script">La Dolce Vita</div>
+      <p>Tenue élégante inspirée<br>des étés italiens.</p>
+      <div class="palette">
+        <div class="color"><div class="circle white"></div>Blanc cassé</div>
+        <div class="color"><div class="circle linen"></div>Lin</div>
+        <div class="color"><div class="circle yellow"></div>Jaune</div>
+        <div class="color"><div class="circle terracotta"></div>Terracotta</div>
+        <div class="color"><div class="circle coral"></div>Corail</div>
+        <div class="color"><div class="circle raspberry"></div>Framboise</div>
+        <div class="color"><div class="circle bordeaux"></div>Bordeaux</div>
+        <div class="color"><div class="circle olive"></div>Olive</div>
+      </div>
+    </article>
+  </div>
 </section>
-<section class="card"><h2>Lieux</h2><div class="mini">— 🌿 —</div><div class="buttons"><a class="button" target="_blank" rel="noopener noreferrer"
-href="https://www.google.com/maps/place/Mairie+de+L'Isle-Jourdain+(32600)/@43.6134416,1.0803358,18.44z/data=!4m6!3m5!1s0x12a94fbf78e4e341:0x51f80820abf1a43a!8m2!3d43.6133617!4d1.0815682!16s%2Fg%2F1tfjbq2m?entry=ttu&g_ep=EgoyMDI2MDcxNC4wIKXMDSoASAFQAw%3D%3D">
-📍 Mairie
-</a><a class="button" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=Domaine+de+Solomiac">📍 Domaine</a></div></section>
-</main>
-<footer class="footer">♥<br>Votre présence fera de cette journée<br>un moment inoubliable</footer>
+
+<footer>
+  <div class="footer-art">
+    <p class="footer-message">Votre présence fera de cette journée<br>un moment inoubliable.<br>♥</p>
+  </div>
+  <div class="bottom">L'amore è la bellezza dell'anima.</div>
+</footer>
 </div>
 <script>
-const target=new Date("2027-09-04T15:30:00+02:00").getTime();
-const box=document.getElementById("countdown");
-function updateCountdown(){const diff=target-Date.now();if(diff<=0){box.innerHTML="♥ C'est le grand jour !";return;}const days=Math.ceil(diff/(1000*60*60*24));box.innerHTML="🌿 <strong>"+days+"</strong> jours restants";}
-updateCountdown();setInterval(updateCountdown,3600000);
+const target = new Date('2027-09-04T15:30:00+02:00').getTime();
+const box = document.getElementById('countdown');
+function updateCountdown(){
+  const diff = target - Date.now();
+  if(diff <= 0){ box.textContent = "C'est le grand jour !"; return; }
+  const days = Math.ceil(diff / 86400000);
+  box.textContent = days + ' jours avant notre mariage';
+}
+updateCountdown();
+setInterval(updateCountdown, 3600000);
 </script>
 </body>
 </html>
